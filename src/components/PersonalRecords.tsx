@@ -1,5 +1,5 @@
 "use client";
-
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "@/components/AccountContext";
 
@@ -299,15 +299,31 @@ export default function PersonalRecords() {
                 </div>
               </div>
               <div
-                className={`mt-3 pt-2.5 border-t border-[var(--border)] text-xs truncate w-full block ${
-                  rec.isRepo
-                    ? "font-medium text-[var(--card-foreground)]"
-                    : "text-[var(--muted-foreground)]"
-                }`}
-                title={rec.subtext}
-              >
-                {rec.subtext}
-              </div>
+              className={`mt-3 pt-2.5 border-t border-[var(--border)] text-xs w-full ${
+                rec.isRepo
+                  ? "font-medium text-[var(--card-foreground)]"
+                  : "text-[var(--muted-foreground)]"
+              }`}
+              title={rec.subtext}
+            >
+              {rec.isRepo && repos[0]?.url ? (
+                <div className="flex items-center justify-center gap-1 truncate">
+                  <span className="truncate">{rec.subtext}</span>
+
+                  <a
+                    href={repos[0].url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open on GitHub"
+                    className="shrink-0 text-[var(--muted-foreground)] hover:text-[var(--accent)] transition-colors"
+                  >
+                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+                  </a>
+                </div>
+              ) : (
+                rec.subtext
+              )}
+            </div>
             </div>
           ))}
         </div>
