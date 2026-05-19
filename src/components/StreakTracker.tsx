@@ -1,8 +1,4 @@
 "use client";
-<<<<<<< HEAD
-
-=======
->>>>>>> 1d8c199 (fix: replace heroicons dependency with inline svg)
 import { useCallback, useEffect, useState } from "react";
 import { useAccount } from "@/components/AccountContext";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -290,9 +286,7 @@ export default function StreakTracker() {
                 </span>
               )}
             </div>
-<<<<<<< HEAD
             <div className="mt-1 text-xs text-[var(--muted-foreground)]">{stat.label}</div>
-=======
             <div className="mt-1 flex items-center justify-center gap-1 text-xs text-[var(--muted-foreground)]">
               <span>{stat.label}</span>
 
@@ -320,7 +314,6 @@ export default function StreakTracker() {
                 </svg>
               </button>
             </div>
->>>>>>> 1d8c199 (fix: replace heroicons dependency with inline svg)
           </div>
         ))}
       </div>
