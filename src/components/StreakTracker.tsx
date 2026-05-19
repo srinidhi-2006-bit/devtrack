@@ -185,7 +185,7 @@ export default function StreakTracker() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--background)] transition-opacity hover:opacity-90"
+            className="mt-4 rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-foreground)] transition-opacity hover:opacity-90"
           >
             Open GitHub
           </a>
