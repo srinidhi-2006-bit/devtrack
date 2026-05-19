@@ -316,7 +316,7 @@ export default function PersonalRecords() {
                     href={rec.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open on GitHub"
+                    aria-label={`Open ${rec.subtext} on GitHub`}
                     className="shrink-0 text-[var(--muted-foreground)] hover:text-[var(--accent)] transition-colors"
                   >
                     <svg
