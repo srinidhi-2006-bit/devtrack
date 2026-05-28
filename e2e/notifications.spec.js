@@ -73,9 +73,11 @@ test("notification bell opens and closes drawer", async ({ page }) => {
   });
 
   await page.goto("/dashboard");
-  
+  await page.waitForLoadState("networkidle");
   const bellButton = page.getByRole("button", { name: /Notifications/ });
-  await expect(bellButton).toBeVisible();
+  await expect(bellButton).toBeVisible({
+    timeout: 5000,
+  });
   
   await bellButton.click();
   const drawerHeading = page.getByRole("heading", { name: "Notifications" });
