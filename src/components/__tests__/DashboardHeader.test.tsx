@@ -1,55 +1,44 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import DashboardHeader from "../DashboardHeader";
 import { useSession } from "next-auth/react";
 
-jest.mock("next-auth/react");
+vi.mock("next-auth/react");
 
-jest.mock("@/components/NotificationBell", () => {
-  const MockNotificationBell = () => <div>NotificationBell</div>;
-  MockNotificationBell.displayName = "MockNotificationBell";
-  return MockNotificationBell;
-});
+vi.mock("@/components/NotificationBell", () => ({
+  default: () => <div>NotificationBell</div>,
+}));
 
-jest.mock("@/components/AccountToggle", () => {
-  const MockAccountToggle = () => <div>AccountToggle</div>;
-  MockAccountToggle.displayName = "MockAccountToggle";
-  return MockAccountToggle;
-});
+vi.mock("@/components/AccountToggle", () => ({
+  default: () => <div>AccountToggle</div>,
+}));
 
-jest.mock("@/components/SignOutButton", () => {
-  const MockSignOutButton = () => <div>SignOutButton</div>;
-  MockSignOutButton.displayName = "MockSignOutButton";
-  return MockSignOutButton;
-});
+vi.mock("@/components/SignOutButton", () => ({
+  default: () => <div>SignOutButton</div>,
+}));
 
-jest.mock("@/components/ThemeToggle", () => {
-  const MockThemeToggle = () => <div>ThemeToggle</div>;
-  MockThemeToggle.displayName = "MockThemeToggle";
-  return MockThemeToggle;
-});
+vi.mock("@/components/ThemeToggle", () => ({
+  default: () => <div>ThemeToggle</div>,
+}));
 
-jest.mock("@/components/UserAvatar", () => {
-  const MockUserAvatar = () => <div>UserAvatar</div>;
-  MockUserAvatar.displayName = "MockUserAvatar";
-  return MockUserAvatar;
-});
+vi.mock("@/components/UserAvatar", () => ({
+  default: () => <div>UserAvatar</div>,
+}));
 
-jest.mock("@/components/KeyboardShortcuts", () => {
-  const MockKeyboardShortcuts = () => <div>KeyboardShortcuts</div>;
-  MockKeyboardShortcuts.displayName = "MockKeyboardShortcuts";
-  return MockKeyboardShortcuts;
-});
+vi.mock("@/components/KeyboardShortcuts", () => ({
+  default: () => <div>KeyboardShortcuts</div>,
+}));
 
-const mockedUseSession = useSession as jest.Mock;
+const mockedUseSession = useSession as any;
 
 describe("DashboardHeader", () => {
   beforeEach(() => {
-    global.fetch = jest.fn() as jest.Mock;
+    global.fetch = vi.fn() as any;
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it("renders Dashboard heading", () => {
@@ -97,7 +86,7 @@ describe("DashboardHeader", () => {
       status: "authenticated",
     });
 
-    (fetch as jest.Mock).mockResolvedValue({
+    (fetch as any).mockResolvedValue({
       ok: true,
       json: async () => ({
         is_public: true,
