@@ -117,10 +117,6 @@ test.beforeEach(async ({ page }) => {
     await route.fulfill({
       contentType: "application/json",
       body: JSON.stringify({ ok: true }),
-            last_synced_at: new Date().toISOString(),
-          },
-        ],
-      }),
     });
   });
 
@@ -294,11 +290,11 @@ function mockMetricResponse(url) {
       commits: { current: 10, previous: 7, delta: 3, trend: "up" },
       prs: {
         thisWeek: { opened: 3, merged: 2 },
-        lastWeek: { opened: 1, merged: 1 }
+        lastWeek: { opened: 1, merged: 1 },
       },
       activeDays: {
         thisWeek: 5,
-        lastWeek: 4
+        lastWeek: 4,
       },
       streak: 3,
       topRepo: "demo/repo",
