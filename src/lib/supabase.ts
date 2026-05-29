@@ -25,6 +25,7 @@ export const supabaseAdmin: SupabaseAdminClient =
     ? createClient(supabaseUrl, serviceRoleKey)
     : createUnavailableSupabaseAdmin();
 
+
 interface User {
   id: string;
   github_id: string;

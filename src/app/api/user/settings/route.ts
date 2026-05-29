@@ -184,6 +184,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
+
 export async function PATCH(req: NextRequest) {
   const session = await getServerSession(authOptions);
 
